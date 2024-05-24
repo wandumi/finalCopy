@@ -1,0 +1,66 @@
+<style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+</style>
+<div class="tabs-section">
+    <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px tabs-header">
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Profile</a>
+            </li>
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Dashboard</a>
+            </li>
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Settings</a>
+            </li>
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Contacts</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content active p-4 bg-white rounded-lg shadow mt-4">
+        <h2 class="text-xl font-bold mb-2">Dashboard Content</h2>
+        <p>This is the content for the Dashboard tab.</p>
+    </div>
+    <div class="tab-content p-4 bg-white rounded-lg shadow mt-4">
+        <h2 class="text-xl font-bold mb-2">Profile Content</h2>
+        <p>This is the content for the Profile tab.</p>
+    </div>
+    <div class="tab-content p-4 bg-white rounded-lg shadow mt-4">
+        <h2 class="text-xl font-bold mb-2">Settings Content</h2>
+        <p>This is the content for the Settings tab.</p>
+    </div>
+    <div class="tab-content p-4 bg-white rounded-lg shadow mt-4">
+        <h2 class="text-xl font-bold mb-2">Contacts Content</h2>
+        <p>This is the content for the Contacts tab.</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabs = document.querySelectorAll('.tabs-header li a');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                tabContents[index].classList.add('active');
+
+                tabs.forEach(t => {
+                    t.classList.remove('text-blue-600', 'border-blue-600', 'dark:text-blue-500', 'dark:border-blue-500');
+                    t.classList.add('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
+                });
+
+                tab.classList.add('text-blue-600', 'border-blue-600', 'dark:text-blue-500', 'dark:border-blue-500');
+                tab.classList.remove('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
+            });
+        });
+    });
+</script>
